@@ -5,6 +5,10 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+/**
+ Версия 4 - возврат используемых значений через массив.
+ */
+
 public class Fibonacci_v4 {
 
     public static int fibArray[];

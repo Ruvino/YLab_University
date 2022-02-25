@@ -5,6 +5,10 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+/**
+ Версия 2 - с использованием цикла
+ */
+
 public class Fibonacci_v2 {
 
     public static void main(String[] args) throws IOException {
@@ -24,7 +28,7 @@ public class Fibonacci_v2 {
             return 1;
         }
 
-        int fibo1=1, fibo2=1, fibonacci=1;
+        int fibo1 = 1, fibo2 = 1, fibonacci = 1;
 
         for(int i= 3; i <= n; i++){
 

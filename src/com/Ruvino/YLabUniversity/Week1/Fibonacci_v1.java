@@ -5,6 +5,10 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+/**
+Версия 1 - просто обычная рекурсия
+ */
+
 public class Fibonacci_v1 {
 
     public static void main(String[] args) throws IOException {
