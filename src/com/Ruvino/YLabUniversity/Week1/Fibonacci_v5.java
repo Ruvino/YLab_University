@@ -15,7 +15,7 @@ public class Fibonacci_v5 {
 
     public static void main(String[] args) throws IOException, FibonacciException {
 
-        FibonacciSuperClass.fillArray();
+        //FibonacciSuperClass.fillArray();
 
         System.out.print("Введите элемент последовательности, который хотите найти: ");
 
@@ -30,8 +30,9 @@ public class Fibonacci_v5 {
             while (true) {
                 String answer = new BufferedReader(new InputStreamReader(System.in)).readLine();
                if (answer.equalsIgnoreCase("y") || answer.equalsIgnoreCase("д")) {
-                   System.out.println("Инициализируем массив");
+                   System.out.println("Инициализируем массив...");
                    FibonacciSuperClass.fillArray();
+                   System.out.println("...массив готов");
                    FibonacciSuperClass.getFibonacci(correctNumber);
                    break;
                }
