@@ -22,8 +22,8 @@ public class Fibonacci_v1 {
     }
 
     public static int fib_v1(int n){
-        if(n==0) return 0;
-        else if(n==1) return 1;
+        if(n == 0) return 0;
+        else if(n == 1) return 1;
         else {
             return fib_v1(n - 1) + fib_v1(n - 2);
         }

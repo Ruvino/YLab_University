@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 /**
  * My class for checks validate args for Fibonacci class
  * @author      Timofei Proshunin
- * @since       1.0
+ * @since       1.0.1
  */
 
 public class Checks {
@@ -17,7 +17,7 @@ public class Checks {
         int stopNumber = 47;
 
         try {
-            if (numCheck >= stopNumber) throw new FibonacciException("Для типа \"int\" нельзя использовать число больше 46 из-за переполнения");
+            if (numCheck >= stopNumber) throw new FibonacciException("Для типа \"int\" нельзя использовать число больше чем " + (stopNumber-1) + " из-за переполнения");
             return numCheck;
         }
         catch (FibonacciException ex){
