@@ -1,8 +1,10 @@
 package com.Ruvino.YLabUniversity.Week2;
 
+import com.Ruvino.YLabUniversity.Week3.MyXMLWriter;
+
 public class GameController {
 
-    public static boolean isGameOver(char[][] gameBoard, Player player) {
+    public static boolean isGameOver(char[][] gameBoard, Player player, int numberXMLFile) {
 
         char playerCharacter = player.getCharacter();
         char side = '\u0000';
@@ -35,21 +37,25 @@ public class GameController {
                 && gameBoard[2][0] != ' ' && gameBoard[2][2] != ' ' && gameBoard[2][4] != ' ')
             side = 'T';
 
-        return gameOver(side, player);
+        return gameOver(side, player, numberXMLFile);
     }
 
-    private static boolean gameOver(char side, Player player) {
+    private static boolean gameOver(char side, Player player, int numberXMLFile) {
 
         if (side == '\u0000') return false;
 
+        String winText;
+
         if (side == 'T') {
-            System.out.println("Ничья");
-            return true;
+            winText = "Ничья";
+            System.out.println(winText);
         } else {
-            System.out.println(player.getName() + " выиграл");
+            winText = player.getName() + " выиграл";
+            System.out.println(winText);
             addScore(player.getPlayerNumber());
-            return true;
         }
+        MyXMLWriter.updateGameResult(StartGame.XMLFileName+ numberXMLFile +".xml", player, numberXMLFile, winText);
+        return true;
     }
 
     private static void addScore(int playerNumber) {

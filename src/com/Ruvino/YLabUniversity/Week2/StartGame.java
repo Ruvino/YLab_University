@@ -10,6 +10,8 @@ public class StartGame {
     public static final String BEGIN_ANSI_RED = "\u001B[31m";
     public static final String END_ANSI_RED = "\u001B[0m";
 
+    public static String XMLFileName = "game_";
+
     public static void main(String[] args) throws IOException {
 
         System.out.println("Добро пожаловть в Крестики-Нолики (Ultimate Edition)");
@@ -25,7 +27,12 @@ public class StartGame {
         Player player1 = new Player(namePlayer1);
         Player player2 = new Player(namePlayer2, 'O');
 
-        GamePlay.start(player1, player2);
+        Player[] players = new Player[2];
+
+        players[0] = player1;
+        players[1] = player2;
+
+        GamePlay.start(players);
     }
 
     private static void printRules() {

@@ -1,6 +1,8 @@
 package com.Ruvino.YLabUniversity.Week2;
 
-import java.util.Scanner;
+import com.Ruvino.YLabUniversity.Week3.MyXMLWriter;
+
+import java.util.*;
 
 public class GamePlay {
 
@@ -8,7 +10,12 @@ public class GamePlay {
     static int player2Score = 0;
     static Scanner input = new Scanner(System.in);
 
-    public static void start(Player player1, Player player2) {
+    public static LinkedHashMap<Integer, Integer> listOfStep = new LinkedHashMap<>(9);
+
+    public static void start(Player[] players){
+
+        Player player1 = players[0];
+        Player player2 = players[1];
 
         char[][] gameBoard = {
                 {'_', '|', '_', '|', '_'},
@@ -21,17 +28,22 @@ public class GamePlay {
         boolean gameOver = false;
         boolean playAgain = true;
 
+        int numberXMLFile = 0;
+
         while (playAgain) {
+            MyXMLWriter.createTemplate(players, ++numberXMLFile, GamePlay.class.getSimpleName(), Player.class.getSimpleName());
             while (!gameOver) {
 
                 playerMove(gameBoard, player1);
-                gameOver = GameController.isGameOver(gameBoard, player1);
+                gameOver = GameController.isGameOver(gameBoard, player1, numberXMLFile);
                 if (gameOver) break;
 
                 playerMove(gameBoard, player2);
-                gameOver = GameController.isGameOver(gameBoard, player2);
+                gameOver = GameController.isGameOver(gameBoard, player2, numberXMLFile);
                 if (gameOver) break;
             }
+
+            MyXMLWriter.updateSteps(StartGame.XMLFileName+ numberXMLFile +".xml", listOfStep, numberXMLFile);
 
             MyFileWriter.writeFile(player1, player2);
 
@@ -73,6 +85,9 @@ public class GamePlay {
         }
 
         System.out.printf("%s поставил \"%c\" на позицию %d\n", player.getName(), player.getCharacter(), move);
+
+        listOfStep.put(move, player.getPlayerNumber());
+
         GameBoard.updateBoard(move, player.getPlayerNumber(), gameBoard);
     }
 }
