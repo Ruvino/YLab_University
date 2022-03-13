@@ -57,7 +57,7 @@ public class MyXMLWriter {
         gameResultElementName = "GameResult";
     }
 
-    public static void createLofFile(LinkedHashMap<Integer, Integer> listOfStep, ArrayList<Player> players) {
+    public static void createLogFile(LinkedHashMap<Integer, Integer> listOfStep, ArrayList<Player> players) {
 
         String fileName = String.format(XMLFileName, ++numberXMLFile);
 

@@ -40,7 +40,7 @@ public class GamePlay {
                 if (gameOver) break;
             }
 
-            MyXMLWriter.createLofFile(listOfStep, players);
+            MyXMLWriter.createLogFile(listOfStep, players);
             MyFileWriter.writeFile(player1, player2);
 
             System.out.println("Хотите сыграть ещё раз? Д/Н");
