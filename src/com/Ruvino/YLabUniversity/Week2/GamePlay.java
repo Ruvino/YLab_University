@@ -86,4 +86,10 @@ public class GamePlay {
 
         GameBoard.updateBoard(move, player.getPlayerNumber(), gameBoard);
     }
+
+    public static void playerMove(char[][] gameBoard, int move, int playerNumber){
+
+        GameBoard.updateBoard(move, playerNumber, gameBoard);
+
+    }
 }
