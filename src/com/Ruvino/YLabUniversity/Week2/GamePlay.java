@@ -12,10 +12,10 @@ public class GamePlay {
 
     public static LinkedHashMap<Integer, Integer> listOfStep = new LinkedHashMap<>(9);
 
-    public static void start(Player[] players){
+    public static void start(ArrayList<Player> players){
 
-        Player player1 = players[0];
-        Player player2 = players[1];
+        Player player1 = players.get(0);
+        Player player2 = players.get(1);
 
         char[][] gameBoard = {
                 {'_', '|', '_', '|', '_'},
@@ -28,23 +28,19 @@ public class GamePlay {
         boolean gameOver = false;
         boolean playAgain = true;
 
-        int numberXMLFile = 0;
-
         while (playAgain) {
-            MyXMLWriter.createTemplate(players, ++numberXMLFile, GamePlay.class.getSimpleName(), Player.class.getSimpleName());
             while (!gameOver) {
 
                 playerMove(gameBoard, player1);
-                gameOver = GameController.isGameOver(gameBoard, player1, numberXMLFile);
+                gameOver = GameController.isGameOver(gameBoard, player1);
                 if (gameOver) break;
 
                 playerMove(gameBoard, player2);
-                gameOver = GameController.isGameOver(gameBoard, player2, numberXMLFile);
+                gameOver = GameController.isGameOver(gameBoard, player2);
                 if (gameOver) break;
             }
 
-            MyXMLWriter.updateSteps(StartGame.XMLFileName+ numberXMLFile +".xml", listOfStep, numberXMLFile);
-
+            MyXMLWriter.createLofFile(listOfStep, players);
             MyFileWriter.writeFile(player1, player2);
 
             System.out.println("Хотите сыграть ещё раз? Д/Н");

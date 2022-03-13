@@ -3,14 +3,12 @@ package com.Ruvino.YLabUniversity.Week2;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-
+import java.util.ArrayList;
 
 public class StartGame {
 
     public static final String BEGIN_ANSI_RED = "\u001B[31m";
     public static final String END_ANSI_RED = "\u001B[0m";
-
-    public static String XMLFileName = "game_";
 
     public static void main(String[] args) throws IOException {
 
@@ -27,10 +25,10 @@ public class StartGame {
         Player player1 = new Player(namePlayer1);
         Player player2 = new Player(namePlayer2, 'O');
 
-        Player[] players = new Player[2];
+        ArrayList<Player> players = new ArrayList<>(2);
 
-        players[0] = player1;
-        players[1] = player2;
+        players.add(player1);
+        players.add(player2);
 
         GamePlay.start(players);
     }

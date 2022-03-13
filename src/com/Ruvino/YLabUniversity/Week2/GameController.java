@@ -4,7 +4,7 @@ import com.Ruvino.YLabUniversity.Week3.MyXMLWriter;
 
 public class GameController {
 
-    public static boolean isGameOver(char[][] gameBoard, Player player, int numberXMLFile) {
+    public static boolean isGameOver(char[][] gameBoard, Player player) {
 
         char playerCharacter = player.getCharacter();
         char side = '\u0000';
@@ -37,10 +37,10 @@ public class GameController {
                 && gameBoard[2][0] != ' ' && gameBoard[2][2] != ' ' && gameBoard[2][4] != ' ')
             side = 'T';
 
-        return gameOver(side, player, numberXMLFile);
+        return gameOver(side, player);
     }
 
-    private static boolean gameOver(char side, Player player, int numberXMLFile) {
+    private static boolean gameOver(char side, Player player) {
 
         if (side == '\u0000') return false;
 
@@ -54,7 +54,9 @@ public class GameController {
             System.out.println(winText);
             addScore(player.getPlayerNumber());
         }
-        MyXMLWriter.updateGameResult(StartGame.XMLFileName+ numberXMLFile +".xml", player, numberXMLFile, winText);
+
+        if (!winText.equalsIgnoreCase("Ничья")) MyXMLWriter.winPlayer = player;
+
         return true;
     }
 
