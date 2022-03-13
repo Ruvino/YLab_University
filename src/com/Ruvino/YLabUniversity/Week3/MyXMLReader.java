@@ -68,16 +68,14 @@ public class MyXMLReader {
 
         if (nodes.getLength() == 1){
             Element node = (Element) nodes;
-            System.out.println();
-            System.out.println(node.getTextContent());
+            System.out.println("\n" + node.getTextContent());
         }
         else {
             Element playerWin = (Element) nodes.item(1);
             String playerId = playerWin.getAttribute(MyXMLWriter.attrIdPlayerElement);
             String playerName = playerWin.getAttribute(MyXMLWriter.attrNamePlayerElement);
             String playerSymbol = playerWin.getAttribute(MyXMLWriter.attrSymbolPlayerElement);
-            System.out.println();
-            System.out.printf("Player %s -> %s is winner as '%s'!", playerId, playerName, playerSymbol);
+            System.out.printf("\nPlayer %s -> %s is winner as '%s'!", playerId, playerName, playerSymbol);
         }
 
     }
