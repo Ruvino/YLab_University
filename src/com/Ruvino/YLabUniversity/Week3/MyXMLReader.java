@@ -44,7 +44,7 @@ public class MyXMLReader {
                     int playerNumber = Integer.parseInt(element.getAttribute(MyXMLWriter.attrPlayerIdStepElement));
 
                     // get value
-                    int move = Integer.parseInt(element.getTextContent());
+                    int move = Adapter.convertValue(element.getTextContent());
 
                     System.out.println();
                     GamePlay.playerMove(gameBoard, move, playerNumber);
