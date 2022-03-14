@@ -15,8 +15,6 @@ import java.io.IOException;
 
 public class MyXMLReader {
 
-    private static final String FILENAME = "game_1.xml";
-
     public static void main(String[] args) {
 
         char[][] gameBoard = {
@@ -27,6 +25,7 @@ public class MyXMLReader {
 
         try {
             // parse XML file
+            String FILENAME = "game_1.xml";
             Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new File(FILENAME));
 
             doc.getDocumentElement().normalize();
@@ -66,10 +65,7 @@ public class MyXMLReader {
 
         NodeList nodes = gameResult.getChildNodes();
 
-        if (nodes.getLength() == 1){
-            Element node = (Element) nodes;
-            System.out.println("\n" + node.getTextContent());
-        }
+        if (nodes.getLength() == 1) System.out.println("\n" + ((Element)nodes).getTextContent());
         else {
             Element playerWin = (Element) nodes.item(1);
             String playerId = playerWin.getAttribute(MyXMLWriter.attrIdPlayerElement);
