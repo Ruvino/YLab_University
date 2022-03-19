@@ -12,7 +12,7 @@ public class StartGame {
 
     public static void main(String[] args) throws IOException {
 
-        System.out.println("Добро пожаловть в Крестики-Нолики (Ultimate Edition)");
+        System.out.println("Добро пожаловать в Крестики-Нолики (Ultimate Edition)");
 
         printRules();
 

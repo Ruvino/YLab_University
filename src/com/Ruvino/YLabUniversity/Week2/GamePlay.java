@@ -1,6 +1,7 @@
 package com.Ruvino.YLabUniversity.Week2;
 
 import com.Ruvino.YLabUniversity.Week3.MyXMLWriter;
+import com.Ruvino.YLabUniversity.Week4.MyJSONWriter;
 
 import java.util.*;
 
@@ -41,6 +42,7 @@ public class GamePlay {
             }
 
             MyXMLWriter.createLogFile(listOfStep, players);
+            MyJSONWriter.createLogFile(listOfStep, players);
             MyFileWriter.writeFile(player1, player2);
 
             System.out.println("Хотите сыграть ещё раз? Д/Н");

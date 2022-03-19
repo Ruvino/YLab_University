@@ -1,7 +1,7 @@
 package com.Ruvino.YLabUniversity.Week3;
 
-import com.Ruvino.YLabUniversity.Week2.GamePlay;
 import com.Ruvino.YLabUniversity.Week2.Player;
+import com.Ruvino.YLabUniversity.Week4.MyWriter;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
@@ -17,49 +17,11 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
-public class MyXMLWriter {
-
-    public static String XMLFileName = "game_%d.xml";
-    public static Player winPlayer = null;
-    public static int numberXMLFile = 0;
-
-    public static String
-
-            rootElementName,
-
-            playerElementName,
-            attrIdPlayerElement,
-            attrNamePlayerElement,
-            attrSymbolPlayerElement,
-
-            gameElementName,
-
-            stepElementName,
-            attrNumStepElement,
-            attrPlayerIdStepElement,
-
-            gameResultElementName;
-
-    static {
-        rootElementName = GamePlay.class.getSimpleName();
-
-        playerElementName = Player.class.getSimpleName();
-        attrIdPlayerElement = "id";
-        attrNamePlayerElement = "name";
-        attrSymbolPlayerElement = "symbol";
-
-        gameElementName = "Game";
-
-        stepElementName = "Step";
-        attrNumStepElement = "num";
-        attrPlayerIdStepElement = "playerId";
-
-        gameResultElementName = "GameResult";
-    }
+public class MyXMLWriter extends MyWriter {
 
     public static void createLogFile(LinkedHashMap<Integer, Integer> listOfStep, ArrayList<Player> players) {
 
-        String fileName = String.format(XMLFileName, ++numberXMLFile);
+        String fileName = String.format(FileName, ++numberFile, ExtensionFile.xml);
 
         try {
 
@@ -77,7 +39,7 @@ public class MyXMLWriter {
 
                 rootElement.appendChild(playerElement);
 
-                playerElement.setAttribute(attrIdPlayerElement, String.valueOf(i));
+                playerElement.setAttribute(attrIdPlayerElement, String.valueOf(players.get(i - 1).getPlayerNumber()));
                 playerElement.setAttribute(attrNamePlayerElement, players.get(i - 1).getName());
                 playerElement.setAttribute(attrSymbolPlayerElement, String.valueOf(players.get(i - 1).getCharacter()));
 
@@ -108,8 +70,6 @@ public class MyXMLWriter {
 
             }
 
-            listOfStep.clear();
-
             //create gameResult element
             Element gameResultElement = doc.createElement(gameResultElementName);
             rootElement.appendChild(gameResultElement);
@@ -121,7 +81,6 @@ public class MyXMLWriter {
                 playerWinElement.setAttribute(attrIdPlayerElement, String.valueOf(winPlayer.getPlayerNumber()));
                 playerWinElement.setAttribute(attrNamePlayerElement, winPlayer.getName());
                 playerWinElement.setAttribute(attrSymbolPlayerElement, String.valueOf(winPlayer.getCharacter()));
-                winPlayer = null;
             } else gameResultElement.setTextContent("Draw!");
 
             //write the content into xml file
