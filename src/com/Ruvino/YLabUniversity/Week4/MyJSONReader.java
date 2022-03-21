@@ -18,7 +18,7 @@ public class MyJSONReader extends MyWriter {
 
         try {
             // create a reader
-            Reader reader = Files.newBufferedReader(Paths.get("game_3.json"));
+            Reader reader = Files.newBufferedReader(Paths.get("game_1.json"));
 
             // create JsonObject instance
             JsonObject parser = JsonParser.parseReader(reader).getAsJsonObject();
@@ -36,26 +36,13 @@ public class MyJSONReader extends MyWriter {
                 GamePlay.playerMove(gameBoard, move, playerNumber);
             }
 
-            printPlayerWin(parser);
+            MyReader.printPlayerWin(parser);
 
             //close reader
             reader.close();
 
         } catch (Exception ex) {
             ex.printStackTrace();
-        }
-    }
-
-    private static void printPlayerWin(JsonObject parser) {
-
-        try {
-            JsonObject playerWin = parser.get(rootElementName.toLowerCase()).getAsJsonObject().get(gameResultElementNameJSON).getAsJsonObject().get(playerElementName.toLowerCase()).getAsJsonObject();
-            String playerId = playerWin.get(attrIdPlayerElement).getAsString();
-            String playerName = playerWin.get(attrNamePlayerElement).getAsString();
-            String playerSymbol = playerWin.get(attrSymbolPlayerElement).getAsString();
-            System.out.printf("\nPlayer %s -> %s is winner as '%s'!", playerId, playerName, playerSymbol);
-        }catch (Exception e){
-            System.out.println("\nDraw!");
         }
     }
 }

@@ -2,6 +2,7 @@ package com.Ruvino.YLabUniversity.Week3;
 
 
 import com.Ruvino.YLabUniversity.Week2.GamePlay;
+import com.Ruvino.YLabUniversity.Week4.MyReader;
 import com.Ruvino.YLabUniversity.Week4.MyWriter;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -47,27 +48,10 @@ public class MyXMLReader extends MyWriter {
                 }
             }
 
-            printPlayerWin(doc);
+            MyReader.printPlayerWin(doc);
 
         } catch (ParserConfigurationException | SAXException | IOException e) {
             e.printStackTrace();
         }
-    }
-
-    private static void printPlayerWin(Document doc) {
-
-        Node gameResult = doc.getElementsByTagName(gameResultElementName).item(0);
-
-        NodeList nodes = gameResult.getChildNodes();
-
-        if (nodes.getLength() == 1) System.out.println("\n" + ((Element)nodes).getTextContent());
-        else {
-            Element playerWin = (Element) nodes.item(1);
-            String playerId = playerWin.getAttribute(attrIdPlayerElement);
-            String playerName = playerWin.getAttribute(attrNamePlayerElement);
-            String playerSymbol = playerWin.getAttribute(attrSymbolPlayerElement);
-            System.out.printf("\nPlayer %s -> %s is winner as '%s'!", playerId, playerName, playerSymbol);
-        }
-
     }
 }
