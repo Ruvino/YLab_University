@@ -3,7 +3,7 @@ package com.Ruvino.YLabUniversity.Week4;
 import com.Ruvino.YLabUniversity.Week2.GamePlay;
 import com.Ruvino.YLabUniversity.Week2.Player;
 
-public abstract class MyWriter {
+public abstract class MyWriter implements MyReader {
 
     public static String FileName = "game_%d.%s";
     public static Player winPlayer = null;
