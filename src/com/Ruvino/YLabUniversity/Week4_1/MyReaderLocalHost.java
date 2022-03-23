@@ -20,7 +20,7 @@ import static spark.Spark.staticFiles;
 
 public class MyReaderLocalHost {
 
-    public static void main(String[] argv) {
+    public static void main(String[] args) {
         staticFiles.location("/public");
 
         post("/api/upload", (req, res) -> {
