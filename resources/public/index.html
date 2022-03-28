@@ -5,16 +5,43 @@
     <title>Загрузка файлов на сервер через SparkJava</title>
 </head>
 <body>
-<h2>Дополнительное задание №3 (YLab_University)</h2>
-<p>Загрузить файл и воспроизвести его на сервере</p>
+<h2>Домашнее задание №5 (YLab_University)</h2>
 <hr>
+<p>1) Загрузить файл и воспроизвести его на сервере (метод POST)</p>
 <div style="display:block">
     <form action="/api/upload" method="post" enctype="multipart/form-data">
-        <label for="myfile"></label>
-        <input type="file" id="myfile" name="myfile"/>
+        <label for="myFile"></label>
+        <input type="file" id="myFile" name="myFile"/>
         <input type="submit" id="buttonUpload" value="Отправить файл"/>
         <br>
     </form>
+    <hr>
+    <p>2) RestAPI Tic-Tac-Toe</p>
+    <form method="get" action="/gameplay/player1">
+        <p><b>Имя игрока 1:</b>
+            <input name="playerName1" type="text">
+            <input type="submit" id="buttonPlayer1" value="Отправить имя"/>
+        </p>
+    </form>
+    <form method="get" action="/gameplay/player2">
+        <p><b>Имя игрока 2:</b>
+            <input name="playerName2" type="text">
+            <input type="submit" id="buttonPlayer2" value="Отправить имя"/>
+        </p>
+    </form>
+    <form method="get" action="/gameplay/stepPlayer1">
+        <p><b>Ход игрока 1:</b>
+            <input name="player1Step" type="text">
+            <input type="submit" id="buttonStepPlayer1" value="Отправить ход"/>
+        </p>
+    </form>
+    <form method="get" action="/gameplay/stepPlayer2">
+        <p><b>Ход игрока 2:</b>
+            <input name="player2Step" type="text">
+            <input type="submit" id="buttonStepPlayer2" value="Отправить ход"/>
+        </p>
+    </form>
+    <hr>
 </div>
 </body>
 </html>
