@@ -30,7 +30,7 @@ public class MyRestApi {
         System.out.println("Server started on localhost:8080");
 
         // Создадим первого игрока
-        Spark.get("/gameplay/player1", (request, response) -> {
+        get("/gameplay/player1", (request, response) -> {
             String player1Name = request.queryParams("playerName1");
             System.out.println("Имя первого игрока: " + player1Name);
            return new Player(player1Name);
