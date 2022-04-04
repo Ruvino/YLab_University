@@ -75,6 +75,7 @@ public class GamePlay {
                 }
             }
         }
+        DataBaseActions.deleteTable();
     }
 
     public static void playerMove(char[][] gameBoard, Player player) {
