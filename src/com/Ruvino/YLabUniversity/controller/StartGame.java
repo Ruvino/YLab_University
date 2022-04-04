@@ -18,8 +18,6 @@ public class StartGame {
 
     public static void main(String[] args) throws IOException, SQLException {
 
-        DataBaseActions.initDB();
-
         System.out.println("Добро пожаловать в Крестики-Нолики (Ultimate Edition)");
 
         printRules();

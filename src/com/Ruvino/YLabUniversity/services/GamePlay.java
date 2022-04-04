@@ -16,6 +16,8 @@ public class GamePlay {
 
     public static void start(ArrayList<Player> players){
 
+        DataBaseActions.initDB();
+
         Player player1 = players.get(0);
         Player player2 = players.get(1);
 
