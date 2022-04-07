@@ -103,6 +103,16 @@ public class GamePlay {
 
     public static void playerMove(char[][] gameBoard, int move, int playerNumber){
 
+        boolean result = GameController.isValidMove(move, gameBoard);
+
+        while (!result) {
+            System.out.println("Нельзя поставить. Повторите попытку.");
+            move = GamePlay.input.nextInt();
+            result = GameController.isValidMove(move, gameBoard);
+        }
+
+        listOfStep.put(move, playerNumber);
+
         GameBoard.updateBoard(move, playerNumber, gameBoard);
 
     }
